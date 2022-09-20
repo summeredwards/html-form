@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Fahkwang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fahkwang:wght@400;700&display=swap');
+
+html, body{
+	padding: 0;
+	margin: 0;
+	background-color: rgb(68,84,41); /* #445429 */
+	background-color: rgb(114,139,110); /* #728b6e */
+	/*background-color: rgb(100, 1, 1);*/
+}
+
+#main-grid{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: 
+	"form grid-container photo-selection";
+}
+
+#photo-selection{
+	grid-area: photo-selection;
+	display: flex;
+	align-items: center;
+	margin-left: 50px;
+}
+
+form{
+	background-color: black;
+	color: white;
+	grid-area: form;
+	padding-top: 80px;
+	padding-left: 20px;
+	font-size: 15px;
+	margin-top: 100px;
+	margin-right: 24px;
+	width: 400px;
+}
+
+legend, button{
+	font-family: 'Fahkwang', sans-serif;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+button{
+	background-color: white;
+	color: black;
+	font-size: 14px;
+	border: none;
+	padding: 7px 32px;
+	-webkit-transition: 0.5s;
+  	transition: 0.5s;
+  	margin-top: 20px;
+}
+
+button:hover{
+	background-color: rgb(114,139,110);
+	color: white;
+	-webkit-transition: 0.5s;
+  	transition: 0.5s;
+}
+
+label{
+	font-family: 'Fahkwang', sans-serif;
+	margin-bottom: 10px;
+}
+
+fieldset{
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+input[type=text]{
+	box-sizing: border-box;
+  	border: 3px solid #ccc;
+  	-webkit-transition: 0.5s;
+  	transition: 0.5s;
+  	outline: none;
+  	height: 30px;
+}
+
+input[type=text]:focus{
+  	border: 3px solid #555;
+}
+
+/* https://www.geeksforgeeks.org/how-to-style-a-checkbox-using-css/
+.checkmark{
+	position: absolute;
+	top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+}
+
+input:checked ~ .checkmark{
+	background-color: rgb(114,139,110);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}	
+
+input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkmark:after {
+    left: 6px;
+    bottom: 5px;
+    width: 6px;
+    height: 6px;
+    border: solid white;
+    border-width: 4px 4px 4px 4px;
+}*/
+
+.form-element{
+	margin-bottom: 15px;
+}
+
+.blocked{
+	display: block;
+	font-weight: 700;
+}
+
+.checker{
+	display: none;
+}
+
+#queen{
+	display: none;
+}
+
+#small{
+	display: none;
+}
+
+#selected-photo{
+	display: none;
+}
+
+/* -------------------------------------------------- */
+/*					  CHESS BOARD					  */
+/* -------------------------------------------------- */
+
+#grid-container{
+	grid-area: grid-container;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-areas: 
+	"A1 A2 A3 A4 A5 A6"
+	"B1 B2 B3 B4 B5 B6"
+	"C1 C2 C3 C4 C5 C6"
+	"D1 D2 D3 D4 D5 D6"
+	"E1 E2 E3 E4 E5 E6"
+	"F1 F2 F3 F4 F5 F6";
+
+	/* multiple of 6 for width & height (bc 36 squares) */
+	width: 540px;
+	height: 540px;
+	margin-top: 100px;
+	margin-left: 30px;
+}
+
+#A1{
+	grid-area: A1;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#A2{
+	grid-area: A2;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#A3{
+	grid-area: A3;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#A4{
+	grid-area: A4;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#A5{
+	grid-area: A5;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#A6{
+	grid-area: A6;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#B1{
+	grid-area: B1;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#B2{
+	grid-area: B2;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#B3{
+	grid-area: B3;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#B4{
+	grid-area: B4;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#B5{
+	grid-area: B5;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#B6{
+	grid-area: B6;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#C1{
+	grid-area: C1;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#C2{
+	grid-area: C2;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#C3{
+	grid-area: C3;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#C4{
+	grid-area: C4;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#C5{
+	grid-area: C5;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#C6{
+	grid-area: C6;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#D1{
+	grid-area: D1;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#D2{
+	grid-area: D2;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#D3{
+	grid-area: D3;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#D4{
+	grid-area: D4;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#D5{
+	grid-area: D5;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#D6{
+	grid-area: D6;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#E1{
+	grid-area: E1;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#E2{
+	grid-area: E2;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#E3{
+	grid-area: E3;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#E4{
+	grid-area: E4;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#E5{
+	grid-area: E5;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#E6{
+	grid-area: E6;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#F1{
+	grid-area: F1;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#F2{
+	grid-area: F2;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#F3{
+	grid-area: F3;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#F4{
+	grid-area: F4;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#F5{
+	grid-area: F5;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+#F6{
+	grid-area: F6;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	width: 90px;
+	height: 90px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

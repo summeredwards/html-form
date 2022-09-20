@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head> 
+	<meta charset="UTF-8"/>  
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+	<title>Chess</title>
+	<link href="css/main.css" rel="stylesheet"> 
+	<script defer src="js/main.js"></script>
+</head>
+
+<body>
+
+	<!--
+		1 	2 	3 	4 	5 	6
+	  ------------------------
+	A|	A1 	A2 	A3 	A4 	A5 	A6
+	 |
+	B|	B1 	B2 	B3 	B4 	B5 	B6
+	 |
+	C|	C1 	C2 	C3 	C4 	C5 	C6
+	 |
+	D|	D1 	D2 	D3 	D4 	D5 	D6
+	 |
+	E|	E1 	E2 	E3 	E4 	E5 	E6
+	 |
+	F|	F1 	F2 	F3 	F4 	F5 	F6
+
+	-->
+
+	<div id="main-grid">
+		<form>
+			<div class="form-element">
+				<label class="blocked" for="name">What is your name?</label>
+				<input type="text" id="name" name="name">
+			</div>
+
+			<fieldset class="form-element">
+				<legend id="question-w-name">Do you want to play checkers or chess?</legend>
+
+				<div>
+					<input type="checkbox" id="checkers" name="checkbox-group">
+					<label for="checkers">Checkers</label>
+					<span class="checkmark"></span>
+				</div>
+
+				<div>
+					<input type="checkbox" id="chess" name="checkbox-group">
+					<label for="chess">Chess</label>
+					<span class="checkmark"></span>
+				</div>
+			</fieldset>
+
+			<div class="form-element">
+				<label for="board-color" class="blocked" id="color-label">Pick a color for the game board.</label>
+				<input type="color" id="board-color" value="#FFFFFF" name="color">
+			</div>
+
+			<fieldset class="form-element">
+				<legend>What drink are you feeling tonight?</legend>
+
+				<div>
+					<input type="radio" id="martini" name="radio-group">
+					<label for="martini">A cocktail pairs well for tonight.</label>
+				</div>
+
+				<div>
+					<input type="radio" id="coffee" name="radio-group">
+					<label for="coffee">I'm going to need an espresso.</label>
+				</div>
+
+				<div>
+					<input type="radio" id="cards" name="radio-group">
+					<label for="cards">I'll skip the drink, but hand me some cards.</label>
+				</div>
+			</fieldset>
+
+			<button type="button" id="submit">LET'S PLAY</button>
+		</form>
+
+		<div id="grid-container">
+			<div id="A1">
+				
+			</div>
+
+			<div id="A2" class="change-color">
+				<img class="checker" src="img/checker.png" alt="red checker piece">
+			</div>
+
+			<div id="A3">
+				
+			</div>
+
+			<div id="A4" class="change-color">
+				
+			</div>
+
+			<div id="A5">
+				
+			</div>
+
+			<div id="A6" class="change-color">
+				
+			</div>
+
+			<div id="B1" class="change-color">
+				
+			</div>
+
+			<div id="B2">
+				
+			</div>
+
+			<div id="B3" class="change-color">
+				
+			</div>
+
+			<div id="B4">
+				
+			</div>
+
+			<div id="B5" class="change-color">
+				<img id="queen" src="img/queen.png" alt="queen chess piece">
+			</div>
+
+			<div id="B6">
+				
+			</div>
+
+			<div id="C1">
+				
+			</div>
+
+			<div id="C2" class="change-color">
+				
+			</div>
+
+			<div id="C3">
+				
+			</div>
+
+			<div id="C4" class="change-color">
+				
+			</div>
+
+			<div id="C5">
+				
+			</div>
+
+			<div id="C6" class="change-color">
+				
+			</div>
+
+			<div id="D1" class="change-color">
+				
+			</div>
+
+			<div id="D2">
+				
+			</div>
+
+			<div id="D3" class="change-color">
+				
+			</div>
+
+			<div id="D4">
+				
+			</div>
+
+			<div id="D5" class="change-color">
+				<img class="checker" src="img/checker.png" alt="red checker piece">
+			</div>
+
+			<div id="D6">
+				
+			</div>
+
+			<div id="E1">
+				
+			</div>
+
+			<div id="E2" class="change-color">
+				
+			</div>
+
+			<div id="E3">
+				<img id="small" src="img/small.png" alt="small chess piece">
+			</div>
+
+			<div id="E4" class="change-color">
+				
+			</div>
+
+			<div id="E5">
+				
+			</div>
+
+			<div id="E6" class="change-color">
+				
+			</div>
+
+			<div id="F1" class="change-color">
+				
+			</div>
+
+			<div id="F2">
+				
+			</div>
+
+			<div id="F3" class="change-color">
+				
+			</div>
+
+			<div id="F4">
+				
+			</div>
+
+			<div id="F5" class="change-color">
+				
+			</div>
+
+			<div id="F6">
+				
+			</div>
+		</div> <!-- end grid-container -->
+
+		<div id="photo-selection">
+			<img id="selected-photo" src="img/martini.png" alt="martini with two olives">
+
+		</div>
+	</div> <!-- end main-grid -->
+	<!--
+	<form>
+		<div class="form-element">
+			<label class="blocked" for="name">What is your name?</label>
+			<input type="text" id="name" name="name">
+		</div>
+
+		<fieldset class="form-element">
+			<legend id="question-w-name">Do you want to play checkers or chess?</legend>
+
+			<div>
+				<input type="checkbox" id="checkers" name="checkbox-group">
+				<label for="checkers">Checkers</label>
+			</div>
+
+			<div>
+				<input type="checkbox" id="chess" name="checkbox-group">
+				<label for="chess">Chess</label>
+			</div>
+		</fieldset>
+
+		<div class="form-element">
+			<label for="board-color" class="blocked" id="color-label">Pick a color for the game board.</label>
+			<input type="color" id="board-color" name="color">
+		</div>
+
+		<fieldset class="form-element">
+			<legend>What drink are you feeling tonight?</legend>
+
+			<div>
+				<input type="radio" id="martini" name="radio-group">
+				<label for="martini">A cocktail pairs well for tonight.</label>
+			</div>
+
+			<div>
+				<input type="radio" id="coffee" name="radio-group">
+				<label for="coffee">I'm going to need an espresso.</label>
+			</div>
+
+			<div>
+				<input type="radio" id="cards" name="radio-group">
+				<label for="cards">I'll skip the drink, but hand me some cards.</label>
+			</div>
+		</fieldset>
+
+		<button type="button" id="submit">LET'S PLAY</button>
+	</form>
+	-->
+</body>
+
+</html>
+
+
+
